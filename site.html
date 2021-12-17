@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<link rel="stylesheet" href="style.css">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>× & ÷</title>
+</head>
+<body>
+	<div class="main">
+		<div class="header"><div id="multiplication" class="actionSign active">×</div> & <div id="division" class="actionSign">÷</div></div>
+		<div class="nums_holder">
+			<div class="numbers" id="n2">2</div>
+			<div class="numbers" id="n3">3</div>
+			<div class="numbers" id="n4">4</div>
+			<div class="numbers" id="n5">5</div>
+			<div class="numbers" id="n6">6</div>
+			<div class="numbers" id="n7">7</div>
+			<div class="numbers" id="n8">8</div>
+			<div class="numbers" id="n9">9</div>
+			<div class="select_all_button">
+				<div class="squares"></div>
+				<div class="squares"></div>
+				<div class="squares"></div>
+				<div class="squares"></div>
+			</div>
+		</div>
+		<input type="range" class="range" min="0" max="4" step="1" value="2">
+		<div class="range_value">1x</div>
+		<div class="equation_area">
+			<div class="equation_text"></div>
+			<input type="number" class="answer_text hiden">
+			<div class="sign start">▶</div>
+		</div>
+		<div class="mistakes_header">✖</div>
+		<div class="mistakes_area">
+		</div>
+	</div>
+<!-- 	<div class="copyright_container">©
+		<div class="copyright_text">© Terentiuk Ostap 2021</div>
+	</div> -->
+	<script src="script.js"></script>
+</body>
+</html>

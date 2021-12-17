@@ -1,0 +1,251 @@
+.main {
+	margin: 30px auto;
+	width: 1000px;
+	background-color: #f2f2f2;
+	padding: 30px 0;
+	border-radius: 20px;
+	font-family: sans-serif;
+}
+.nums_holder {
+	margin: 0 auto;
+	width: 800px;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+}
+.numbers, .actionSign {
+	width: 50px;
+	height: 50px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 10px;
+	background-color: #d9d9d9;
+	cursor: pointer;
+	margin: 0 5px;
+	transition: 0.25s;
+	user-select: none;
+}
+.numbers.active, .actionSign.active, .select_all_button.active {
+	background-color: #66ff66;
+}
+.select_all_button {
+	width: 50px;
+	height: 50px;
+	border-radius: 10px;
+	background-color: #d9d9d9;
+	cursor: pointer;
+	margin: 0 5px;
+	transition: 1s;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-template-rows: 1fr 1fr;
+	grid-gap: 8px;
+	padding: 8px;	
+	box-sizing: border-box;
+}
+
+.squares {
+	background-color: #66ff66;
+	border-radius: 3px;
+}
+.active .squares {
+	background-color: #d9d9d9;
+}
+.range {
+	appearance: none;
+	width: 800px;
+	margin: 25px auto;
+	display: block;
+	background-color: #d9d9d9;
+	opacity: 0.8;
+	transition: opacity .2s;
+	height: 30px;
+	border-radius: 4px;
+}
+.range:hover {
+	opacity: 1;
+}
+.range::-webkit-slider-thumb{
+	appearance: none;
+	background-color: #66ff66;
+	height: 40px;
+	width: 40px;
+	border-radius: 5px;
+}
+.range_value {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 150px;
+	height: 50px;
+	margin: 0 auto;	
+	box-sizing: border-box;
+	border-radius: 10px;
+	background-color: #d9d9d9;
+
+}
+.unactive {
+	pointer-events: none;
+}
+.header {
+	font-size: 45px;
+	padding: 30px 0;
+	display: flex;
+	align-self: center;
+	justify-content: center;
+	user-select: none;
+	font-family: serif;
+}
+.equation_area {
+	border: 15px solid #d9d9d9;
+	border-radius: 20px;
+	margin: 20px auto;
+	width: 800px;
+	height: 200px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	transition: 1s;
+}
+.equation_area-active {
+	border-color: #66ff66;
+}
+.equation_area-mistake {
+	transition: 0.25s;
+	background-color: #ffb3b3;
+}
+.equation_text {
+	font-size: 40px;
+	margin-right: 10px;
+	color: #262626;
+	transition: 0.500s;
+}
+.answer_text {
+	height: 40px;
+	width: 60px;
+	font-size: 25px;
+	box-sizing: border-box;
+	padding: 5px;
+	color: #4d4d4d;
+	text-align: center;
+	transition: 0.5s
+}
+.equation_text.hiden {
+	opacity: 0;
+}
+.answer_text.hiden, .sign.hiden {
+	opacity: 0;
+	width: 0;
+	padding: 0;
+	border-width: 0;
+}
+.sign {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	user-select: none;
+	background-color: #66ff66;
+	color: white;
+	cursor: pointer;
+	transition: 0.5s;
+}
+.sign.start {
+	border-radius: 10px;
+	width: 120px;
+	height: 80px;
+	font-size: 50px;
+}
+.sign.submit {
+	border-radius: 5px;
+	width: 80px;
+	height: 40px;
+	font-size: 40px;
+	margin-left: 5px;
+}
+.sign.reload {
+	width: 60px;
+	height: 60px;
+	border-radius: 50%;
+	font-weight: bold;
+	font-size: 36px;
+}
+
+input::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
+.mistakes_header {
+	text-align: center;
+	font-size: 45px;
+	color: #d9d9d9;
+	font-weight: bold;
+	transition: 0.5s;
+}
+.mistakes_header.active {
+	color: #ff6666;
+}
+.mistakes_header.no_mistakes {
+	color: #66ff66;
+}
+.mistakes_area {
+	width: 800px;
+	display: flex;
+	flex-direction: row-reverse;
+	margin: 0 auto;
+	justify-content: center;
+	flex-wrap: wrap-reverse;
+	transition: 1s;
+}
+.mistakes_area div {
+	width: 300px;
+	padding: 20px;
+	margin: 20px;
+	border: 4px dashed #d9d9d9;
+	text-align: center;
+	font-size: 20px;
+	transition: 0.5s;
+}
+
+.mistakes_area div.failed {
+	border-color: #ff6666;
+} 
+
+.mistakes_area div.solved {
+	border-color: #66ff66;
+}
+
+.mistakes_area div.unactive {
+	border-color: #d9d9d9;
+}
+
+.copyright_container {
+	color: #d9d9d9;
+	width: 100px;
+	border-radius: 10px;
+	background-color: #f2f2f2;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 0 auto;
+	font-size: 50px;
+	font-weight: bold;
+	flex-direction: column;
+	cursor: pointer;
+	transition: 0.5s;
+	margin-bottom: 25px;
+}
+.copyright_container.active {
+	width: 800px;
+	color: #66ff66;
+}
+.copyright_text {
+	font-size: 20px;
+	color: #000;
+	display: none;
+	margin-bottom: 10px;
+}
+.copyright_text.active {
+	display: block;
+}
