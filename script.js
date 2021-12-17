@@ -47,12 +47,6 @@ range.oninput = function() {
 	rangeValue.innerHTML = rangeValues[range.value] + 'x';
 }
 
-// cp_sign.addEventListener('click', function(e) {
-// 	cp_sign.classList.toggle('active');
-// 	cp_text.classList.toggle('active');
-// 	cp_sign.scrollIntoView({behavior: 'smooth'});
-// });
-
 function activateSelectAllButton() {
 	selectAllButton.addEventListener('click', function(e) {
 		selectAllButton.classList.toggle('active');
