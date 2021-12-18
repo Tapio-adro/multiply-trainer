@@ -8,7 +8,6 @@
 	<title>× & ÷</title>
 </head>
 <body>
-
 	<div class="main">
 		<div class="wrapper">
 			<div class="header"><span id="multiplication" class="actionSign active">×</span> & <span id="division" class="actionSign">÷</span></div>
@@ -29,16 +28,29 @@
 				</div>
 			</div>
 			<input type="range" class="range" min="0" max="4" step="1" value="2">
-			<div class="range_value">1x</div>
+			<div class="range_value">0</div>
 			<div class="equation_area">
 				<div class="equation_text"></div>
 				<input type="number" class="answer_text hiden">
-				<div class="sign start">▶</div>
+				<div class="sign start">
+					<div id="sign_start"></div>
+				</div>
 			</div>
-			<div class="mistakes_header">✖</div>
+			<div class="mistakes_header">
+				<div class="mistake_cross"></div>
+			</div>
 			<div class="mistakes_area"></div>
 		</div>
 	</div>
+
+	<div class="top hiden">
+		<div class="top_in">
+			<div class="top_content">
+			</div>
+		</div>
+	</div>
+
+	<div class="darkBg"></div>
 	<script src="script.js"></script>
 </body>
 </html>
