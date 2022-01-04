@@ -32,11 +32,11 @@ let sign = document.querySelector('.sign');
 let selectAllButton = document.querySelector('.select_all_button');
 let range = document.querySelector('.range');
 let rangeValue = document.querySelector('.range_value');
-let topElem = document.querySelector('.top');
-let topContent = topElem.querySelector('.top_content');
+let resultsElem = document.querySelector('.results');
+let resultsContent = document.querySelector('.results_content')
 let darkBg = document.querySelector('.darkBg')
 
-let top_p1, top_p2, top_holder, top_eqAmount;
+let results_p1, results_p2, results_holder, results_eqAmount;
 let rangeLine, acceptButton;
 
 let trainingInProgress = false;
@@ -68,7 +68,7 @@ function checkInputs() {
 		doEquation();
 	} else if (sign.classList.contains('submit')) {
 		checkAnswer();
-	} else if (topElem.classList.contains("full")) {
+	} else if (resultsElem.classList.contains("full")) {
 		closeResults();
 	} else if (sign.classList.contains('reload')) {
 		resetData();	
@@ -107,12 +107,10 @@ function start() {
 	maxPoints = equations.length;
 	eqAmount = equations.length;
 
-	toggleTopElemTo('top');
-
 	answerText.focus();
 
 	window.scrollTo({
-	    top: 80,
+	    results: 80,
 	    behavior: "smooth"
 	});
 }
@@ -156,8 +154,9 @@ function checkAnswer() {
 		}
 	}
 
+	rangeValue.innerHTML = eqAmount;
+
 	answerText.focus();
-	updateTopBarText();
 
 	if (equations.length > 0) {
 		doEquation();
@@ -168,6 +167,7 @@ function checkAnswer() {
 }
 
 function hideElementsAndShowResult() {
+	toggleEquationArea();
 
 	openResults();
 
@@ -185,7 +185,7 @@ function hideElementsAndShowResult() {
 	checkNoMistakes();
 
 	window.scrollTo({
-	    top: 0,
+	    results: 0,
 	    behavior: "smooth"
 	});
 
@@ -204,19 +204,16 @@ function updateRangeValue () {
 }
 
 function openResults () {
-	toggleEquationArea();
 
-	topContent.classList.add("hiden");
+	resultsContent.classList.add("hiden");
 	setTimeout(() => {
-		topContent.innerHTML = '';
-	
-		topElem.classList.add("full");
+		resultsElem.classList.add("full");
 		darkBg.classList.add('active');
 
 		setTimeout(() => {
-			topContent.classList.remove("hiden");
+			resultsContent.classList.remove("hiden");
 			let result = createResult();
-			result.forEach(elem => topContent.appendChild(elem));
+			result.forEach(elem => resultsContent.appendChild(elem));
 			activateAcceptButton();
 			setTimeout(() => {
 				rangeLine.style.width = (curPoints / maxPoints * 100) + '%';
@@ -349,10 +346,11 @@ function openResults () {
 
 function closeResults () {
 	darkBg.classList.toggle('active');
-	topElem.classList.add('hiden');
+	resultsElem.classList.add('hiden');
 	setTimeout(() => {
-		topContent.innerHTML = '';
-		topElem.classList.toggle('full');
+		resultsContent.innerHTML = '';
+		resultsElem.classList.remove('hiden');
+		resultsElem.classList.remove('full');
 	}, 1000)
 }
 
@@ -369,45 +367,6 @@ function getDuration (option) {
 	secs = secs != 0 ? secs + 'с' : '';
 
 	return mins + secs;
-}
-
-function toggleTopElemTo (mode) {
-	switch (mode) {
-		case 'top':
-			topElem.classList.toggle("hiden");
-			createTopBarText();
-			break;
-	}
-}
-
-function createTopBarText () {
-	top_p1 = document.createElement('p');
-	top_p1.innerHTML = 'Всього прикладів: ' + maxPoints;
-	top_p1.classList.add("top_p", "p1");
-	top_p2 = document.createElement('p');
-	top_p2.innerHTML = 'Залишилось прикладів: ' + maxPoints;
-	top_p2.classList.add("top_p", "p2");
-
-	top_holder = document.createElement('div');
-	top_holder.classList.add("top_holder");
-	
-	top_eqAmount = document.createElement('p');
-	top_eqAmount.classList.add("eqAmount");
-	top_eqAmount.innerHTML = '0 / ' + maxPoints;
-
-	top_holder.appendChild(top_eqAmount);
-
-	topContent.appendChild(top_p1);
-	topContent.appendChild(top_p2);
-	topContent.appendChild(top_holder);
-}
-
-function updateTopBarText () {
-	let str1 = top_p2.innerHTML;
-	str1 = str1.split(' ');
-	str1[str1.length - 1] = eqAmount;
-	top_p2.innerHTML = str1.join(' ');
-	top_eqAmount.innerHTML = maxPoints - eqAmount + ' / ' + maxPoints;
 }
 
 answerText.addEventListener('keyup', function(e) {
