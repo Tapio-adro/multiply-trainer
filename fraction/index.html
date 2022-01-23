@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="../topButtons/topButtons_style.css">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>× & ÷</title>
+</head>
+<body>
+	<div class="main">
+		<div class="wrapper">
+			<div class="header">
+				<div class="actionSign active" id="plus_sign">+</div>
+				<div class="actionSign active" id="minus_sign">−</div>
+				<div class="actionSign active">×</div>
+				<div class="actionSign active">÷</div>
+			</div>
+			<input type="range" class="range" min="3" max="24" step="3" value="6">
+			<div class="range_value">12</div>
+			<div class="equation_area">
+				<div class="equation_text"></div>
+				<input type="number" class="answer_text hiden">
+				<div class="sign start">
+					<div id="sign_start"></div>
+				</div>
+			</div>
+			
+			<div class="mistakes_header">
+				<div class="mistake_cross"></div>
+			</div>
+			<div id="explanations_wrapper" class="hiden">
+				<div id="full_equation"></div>
+				<div id="explanations_container"></div>
+			</div>
+			<div id="to_top_wrapper" class="hiden">
+				<button id="to_top_container">
+					🠕
+				</button>
+			</div>
+		</div>
+	</div>
+
+	<div>
+		<div id="ref_button" class="top_button">?</div>
+		<div id="color_button" class="top_button">
+			<div id="color_inner"></div>
+		</div>
+		<div id="colors_container" class="top_button">
+			<div class="color_container" style="background-color: #66ff66"></div>
+			<div class="color_container" style="background-color: #ff6666"></div>
+			<div class="color_container" style="background-color: #66ffff"></div>
+			<div class="color_container" style="background-color: #ffff66"></div>
+		</div>
+	</div>
+	<div class="ref_wrapper hiden">
+		<div class="ref_content">
+			<section>
+				<h2>Призначення</h2>
+				<p>Програма використовується для покращення та закріплення знання таблички множення і ділення.</p>
+			</section>
+			<section>
+				<h2>Налаштування</h2>
+				<p>
+					Кнопки з символами множення і ділення визначають дії, які будуть використані в прикладах. Вибрати можна відразу обидві дії.
+				</p>
+				<p><img style="width: 600px" src="img/1.jpg" alt=""></p>
+				<p>
+					Кнопки з цифрами визначають цифри, що будуть використовуватися в прикладах. Кнопка з чотирма квадратами вибирає всі цифри. Коли вибрані всі цифри, навпаки скасовує виділення.
+				</p>
+				<p>
+					<img style="width: 600px" src="img/2.jpg" alt="">
+				</p>
+				<p>
+					Положення квадата на лінії визначає кількість прикладів, яку можна спостерігати у віконці під лінією.
+				</p>
+				<p><img style="width: 800px" src="img/3.jpg" alt=""></p>
+				</p>
+			</section>
+			<section>
+				<h2>Використання</h2>
+				<p>Для початку тренування натисніть на зелену кнопку з трикутником або на клавішу "Enter".</p>
+				<p><img style="width: 600px" src="img/4.jpg" alt="">
+				<p>
+					Введіть в поле біля прикладу відповідь і натисніть на кнопку з зеленою стрілкою або на клавішу "Enter".
+				</p>
+				<p><img style="width: 600px" src="img/5.jpg" alt=""></p>
+				<p>
+					Кількість прикладів можна спостерігати у віконці під лінією.
+				</p>
+				<p><img style="width: 600px" src="img/6.jpg" alt=""></p>
+				<p>
+					Кількість крестиків відповідає кількості помилок. Після кожної помилки через один приклад, приклад, в якому було допущено помилку, з'являється знову. Якщо виправити помилку, прямокутник з прикладом стане зеленим, інакше — червоним.
+				</p>
+				<p><img style="width: 800px" src="img/7.jpg" alt=""></p>
+				<p>
+					Коли всі приклади будуть виконані, з'явиться віконце з результатами.
+				</p>
+				<p><img style="width: 1000px" src="img/8.jpg" alt=""></p>
+				<p>
+					Для повторного тренування натисніть на круглу кнопку, показану на зображенні.
+				</p>
+				<p><img style="width: 400px" src="img/9.jpg" alt=""></p>
+
+			</section>
+		</div>
+	</div>
+
+	<div id="correct_answer_wrapper" class="hiden">
+		<div id="correct_answer">
+			<div id="checkmark_sign_container">
+				<div id="checkmark_sign"></div>
+			</div>
+		</div>
+	</div>
+
+	<div class="results">
+		<div class="results_inner">
+			<div class="results_content">
+
+			</div>
+		</div>
+	</div>
+	<div class="darkBg"></div>
+
+	<script src="../topButtons/topButtons_script.js"></script>
+	<script src="fraction_scripts/fraction_methods.js"></script>
+	<script src="fraction_scripts/equations_creator.js"></script>
+	<script src="script.js"></script>
+</body>
+</html>
