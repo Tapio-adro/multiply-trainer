@@ -10,56 +10,6 @@
 	--red: #ff6666;
 }
 
-.ref_button {
-    position: fixed;
-    top: 20px;
-    left: 20px;
-    width: 50px;
-    height: 50px;
-    border-radius: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 2.2rem;
-    cursor: pointer;
-    user-select: none;
-    background-color: white;
-	color: var(--gray);
-    border: 4px solid var(--gray);
-    z-index: 5;
-	transition: 0.2s;
-}
-.ref_button:hover {
-    color: var(--green);
-    border: 4px solid var(--green);
-}
-.ref_button.active {
-    color: var(--green);
-    border: 4px solid var(--green);
-}
-.ref_wrapper {
-    position: fixed;
-    top: 50px;
-    left: 10%;
-    bottom: 50px;
-    width: 80%;
-    height: calc(100vh - 100px);
-    border: 10px solid var(--green);
-    border-radius: 20px;
-    background-color: #fff;
-    padding: 40px;
-	transition: 0.5s;
-	z-index: 4;
-}
-.ref_wrapper.hiden {
-    height: 0;
-    opacity: 0;
-}
-.ref_content {
-    width: 100%;
-    height: 100%;
-    overflow-x: auto;
-}
 
 ::-webkit-scrollbar {
 	border-radius: 10px;
@@ -271,6 +221,7 @@ table.stats {
 	margin: 5px 5px;
 	transition: 0.25s;
 	user-select: none;
+	z-index: 1;
 }
 .numbers.active, .actionSign.active, .select_all_button.active {
 	background-color: var(--green);
@@ -288,7 +239,6 @@ table.stats {
 	grid-template-rows: 1fr 1fr;
 	grid-gap: 8px;
 	padding: 8px;	
-	box-sizing: border-box;
 }
 
 .squares {
@@ -488,6 +438,9 @@ input::-webkit-inner-spin-button {
 }
 
 @media (max-width: 600px) {
+	body {
+		background-color: var(--lightgray);
+	}
 	.results.full {
 		top: 10%;
 		left: 10%;
@@ -666,43 +619,4 @@ input::-webkit-inner-spin-button {
 		margin: 7px;
 	}
 
-
-	.ref_button {
-		top: 10px;
-		left: 10px;
-		width: 40px;
-		height: 40px;
-		border-radius: 7px;
-		font-size: 1.8rem;
-		border: 3px solid var(--gray);
-	}
-	.ref_button:hover {
-		border: 3px solid var(--green);
-	}
-	.ref_button.active {
-		border: 3px solid var(--green);
-	}
-	.ref_wrapper {
-		top: 20px;
-		left: 5%;
-		bottom: 20px;
-		width: 90%;
-		height: calc(100vh - 40px);
-		border: 10px solid var(--green);
-		border-radius: 10px;
-		padding: 20px;
-	}
-	
-	.ref_content section {
-		padding: 10px 15px;
-		margin-bottom: 10px;
-		border-radius: 7px;
-	}
-	.ref_content h2 {
-		margin-bottom: 3px;
-		font-size: 1.4rem;
-	}
-	.ref_content p {
-		font-size: 1.2rem;
-	}
 }

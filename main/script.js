@@ -39,9 +39,6 @@ let darkBg = document.querySelector('.darkBg')
 let results_p1, results_p2, results_holder, results_eqAmount;
 let rangeLine, acceptButton;
 
-let refButton = document.querySelector('.ref_button')
-let refWrapper = document.querySelector('.ref_wrapper')
-
 let trainingInProgress = false;
 
 let timeStart, trainingDuration;
@@ -57,20 +54,12 @@ sign.addEventListener('click', function(e) {
 document.addEventListener('keydown', function(e) {
 	if (e.key == 'Enter') {
 		checkInputs();
-	} else if (refButton.classList.contains('active') && e.key == 'Escape') {
-	refButton.classList.toggle('active');
-	refWrapper.classList.toggle('hiden');	
 	}
 });
 
 range.oninput = function() {
 	updateRangeValue();
 }
-
-refButton.addEventListener('click', ev => {
-	refButton.classList.toggle('active');
-	refWrapper.classList.toggle('hiden');
-})
 
 
 
