@@ -20,9 +20,6 @@
 .eqPart {
     padding: 0 3px;
 }
-.fract .numer {
-    border-bottom: 2px solid #000;
-}
 sup, sub {
     font-size: 0.8rem;
 }
@@ -319,19 +316,17 @@ table.stats {
 	width: 80%;
 	height: 80%;
 }
-#explanations_wrapper {
+.explanations_wrapper {
 	border: 10px solid var(--green);
 	padding: 15px;
 	width: 100%;
 	border-radius: 20px;
 	background-color: #fff;
 	transition: 1s;
-	display: none;
+	display: block;
+	margin-bottom: 30px;
 }
-#explanations_wrapper.hiden {
-	opacity: 0;
-}
-#full_equation {
+.full_equation {
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -339,7 +334,7 @@ table.stats {
 	padding-bottom: 10px;
 	font-size: 1.8rem;
 }
-#equation_with_answer {
+.equation_with_answer {
 	background-color: var(--lightgray);
 	display: flex;
 	justify-content: center;
@@ -355,27 +350,27 @@ table.stats {
 	align-items: center;
 	flex-wrap: wrap;
 }
-#explanations_container li {
+.explanations_container li {
 	font-size: 1.5rem;
 	margin-bottom: 15px;
 	width: 100%;
 }
-#explanations_container {
+.explanations_container {
 	margin-top: 20px;
 } 
 #to_top_wrapper {
-	margin-top: 30px;
-	width: 100%;
+	bottom: 20px;
+	right: 20px;
+	position: fixed;
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	height: 50px;
+	z-index: 99;
+	transition: 0.5s;
 }
 #to_top_wrapper.hiden {
-	height: 0;
 	opacity: 0;
 	pointer-events: none;
-	margin: 0;
 }
 #to_top_container {
 	width: 50px;
@@ -392,6 +387,13 @@ table.stats {
 #to_top_container:hover {
 	opacity: 0.9;
 	cursor: pointer;
+}
+#to_top_button {
+	clip-path: polygon(5% 2%, 5% 100%, 90% 50%);
+	transform: rotate(-90deg);
+	background-color: var(--green);
+	width: 80%;
+	height: 70%;
 }
 
 
@@ -504,6 +506,7 @@ input::-webkit-inner-spin-button {
 
 @media (max-width: 600px) {
 	body {
+		padding-top: 45px;
 		background-color: var(--lightgray);
 	}
 	.results.full {
@@ -590,7 +593,6 @@ input::-webkit-inner-spin-button {
 	}
 	.main {
 		margin: 0;
-		margin-top: 40px;
 		border-radius: 0px;
 		font-family: sans-serif;
 	}
@@ -683,69 +685,55 @@ input::-webkit-inner-spin-button {
 		border: 5px solid var(--green);
 	}
 	
-	#explanations_wrapper {
+	.explanations_wrapper {
 		border: 8px solid var(--green);
 		padding: 10px;
 		border-radius: 15px;
 	}
-	#full_equation {
+	.full_equation {
 		border-bottom: 4px solid var(--green);
 		padding-bottom: 10px;
 		font-size: 20px;
 	}
-	#equation_with_answer {
+	.equation_with_answer {
 		background-color: var(--lightgray);
 		padding: 7px;
 		border-radius: 7px;
 		margin-bottom: 5px;
 	}
-	#explanations_container ol {
+	.explanations_container ol {
 		padding-left: 25px;
 	}
-	#explanations_container li {
+	.explanations_container li {
 		font-size: 15px;
 		margin-bottom: 15px;
 		width: 100%;
 	}
-	#explanations_container {
+	.explanations_container {
 		margin-top: 20px;
 	} 
 	#to_top_wrapper {
-		margin-top: 20px;
-		width: 100%;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		height: 50px;
-	}
-	#to_top_wrapper.hiden {
-		height: 0;
-		opacity: 0;
-		pointer-events: none;
-		margin: 0;
+		bottom: 10px;
+		right: 10px;
 	}
 	#to_top_container {
-		width: 50px;
-		height: 50px;
-		border-radius: 50%;
-		border: 5px solid var(--green);
-		background-color: #fff;
-		display: flex;
-		justify-content: center;
-		align-items: center;
+		width: 40px;
+		height: 40px;
 		font-size: 2.2rem;
-		color: var(--green);
+		border-width: 4px;
+		background: rgba(256, 256, 256, 0.8);
+		backdrop-filter: blur(1px);
 	}
-	#to_top_container:hover {
-		opacity: 0.9;
-		cursor: pointer;
+	#to_top_button {
+		clip-path: polygon(5% 2%, 5% 100%, 90% 50%);
+		transform: rotate(-90deg);
+		background-color: var(--green);
+		width: 80%;
+		height: 70%;
 	}
 
 	.eqPart {
 		padding: 0 2px;
-	}
-	.fract .numer {
-		border-bottom: 2px solid #000;
 	}
 	sup, sub {
 		font-size: 0.8rem;

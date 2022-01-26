@@ -367,16 +367,34 @@ Fraction.actionExplanations = function (equation, final = false) {
                         break;
                 }
                 
-                if(!Fraction.isEqual(wholeFr, answer)) {
-                    add1Eq(wholeFr);
-                }
-
             }
             break;
         case '×':
             if (eq1.isDecimal() && eq2.isDecimal()) {
                 onlyDecimal = true;
                 addEqs(1);
+                let [num1, tens1] = decimalTo_IntTens(eq1);
+                let [num2, tens2] = decimalTo_IntTens(eq2);
+                let tensMult = tens1 * tens2;
+                let eqStr1 = eq1.toDecimal();
+                let eqStr2 = eq2.toDecimal();
+                let isDecimal1 = !eq1.isInteger();
+                let isDecimal2 = !eq2.isInteger();
+                if (!eq1.isInteger()) {
+                    eqStr1 = '' + num1 + ' ÷ ' + tens1;
+                }
+                if (!eq2.isInteger()) {
+                    eqStr2 = '' + num2 + ' ÷ ' + tens2;
+                }
+                let fullStr = eqStr1 + ' × ' + eqStr2;
+                step.push(fullStr + ' =');
+                if (isDecimal1) {
+                    fullStr = '(' + num1 + ' × ' + num2 + ')' + ' ÷ ' + tensMult;
+                    step.push(fullStr + ' =');
+                }
+                fullStr = (num1 * num2) + ' ÷ ' + tensMult;
+                step.push(fullStr + ' =');
+
                 break;
             } 
         case '÷':
@@ -446,7 +464,7 @@ Fraction.actionExplanations = function (equation, final = false) {
             }
 
             if (gcd2 != 1) {
-                wholeFr.numer = eq1.numer + sign + ' ' + '<s>' + eq2.numer + '</s>' + '<sup>' + eq2.numer / gcd2 + '</sup>';
+                wholeFr.numer = eq1.numer + ' ' + sign + ' ' + '<s>' + eq2.numer + '</s>' + '<sup>' + eq2.numer / gcd2 + '</sup>';
                 wholeFr.denom = '<s>' + eq1.denom + '</s>' + '<sub>' + eq1.denom / gcd2 + '</sub> ' + sign + ' ' + eq2.denom;
                 add1Eq(wholeFr);
                 eq1.denom = eq1.denom / gcd2;
@@ -498,6 +516,16 @@ Fraction.actionExplanations = function (equation, final = false) {
                 step.push(answer.copy());
             }
         }
+    }
+
+    function decimalTo_IntTens (fract) {
+        let num = fract.toDecimal();
+        let tens = 1;
+        while (num % 1 != 0) {
+            num *= 10;
+            tens *= 10;
+        }
+        return [num, tens];
     }
     
     function findLCM (num1, num2) {

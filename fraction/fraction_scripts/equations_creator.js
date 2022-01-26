@@ -22,6 +22,7 @@ function createEquationsList (amount, actions) {
     
         let answer = partial.removeChild(answerElement).innerHTML;
 
+
         let explanations = document.createElement('ol');
         for (let step of explanationSteps) {
             let li = document.createElement('li');
@@ -115,6 +116,12 @@ function createEquationElements (equation, isStringToPrint = true) {
                 let denom = document.createElement('div');
                 denom.className = 'denom';
                 denom.innerHTML = part.denom;
+
+                if (isNumerLonger(numer.textContent, denom.textContent)) {
+                    numer.style.borderBottom = '2px solid #000';
+                } else {
+                    denom.style.borderTop = '2px solid #000';
+                }
     
                 fract.appendChild(numer);
                 fract.appendChild(denom);
@@ -132,6 +139,11 @@ function createEquationElements (equation, isStringToPrint = true) {
         elem.className = 'eqPart';
         elem.innerHTML = str;
         elements.appendChild(elem);
+    }
+
+    function isNumerLonger (numer, denom) {
+        let len1 = numer.length, len2 = denom.length;
+        return len1 > len2;
     }
 
     return elements;

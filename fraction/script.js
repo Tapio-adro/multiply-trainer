@@ -12,6 +12,7 @@ let timeAfterFinish = 3000;
 
 
 let main = document.querySelector('.main');
+let pageWrapper = document.querySelector('.wrapper');
 let actionHolders = document.querySelectorAll('.actionSign');
 let equationText = document.querySelector('.equation_text');
 let answerText = document.querySelector('.answer_text');
@@ -21,14 +22,11 @@ let sign = document.querySelector('.sign');
 let range = document.querySelector('.range');
 let rangeValue = document.querySelector('.range_value');
 let resultsElem = document.querySelector('.results');
-let resultsContent = document.querySelector('.results_content')
-let darkBg = document.querySelector('.darkBg')
-let correctAnswerContainer = document.querySelector('#correct_answer_wrapper')
-let explanationsWrapper = document.querySelector('#explanations_wrapper')
-let fullEquationContainer = document.querySelector('#full_equation');
-let explanationsContainer = document.querySelector('#explanations_container')
-let toTopWrapper = document.querySelector('#to_top_wrapper')
-let toTopButton = document.querySelector('#to_top_container')
+let resultsContent = document.querySelector('.results_content');
+let darkBg = document.querySelector('.darkBg');
+let correctAnswerContainer = document.querySelector('#correct_answer_wrapper');
+let toTopWrapper = document.querySelector('#to_top_wrapper');
+let toTopButton = document.querySelector('#to_top_container');
 
 let results_p1, results_p2, results_holder, results_eqAmount;
 let resultsLine, acceptButton;
@@ -53,20 +51,25 @@ toTopButton.addEventListener('click', ev => {
 		top: 0,
 	    behavior: "smooth"
 	});
-	answerText.focus();
 	setTimeout(() => {
-		toTopWrapper.classList.add('hiden');
-		explanationsWrapper.classList.add('hiden');
+		answerText.focus();
 		if (lastEquation) {
-			toTopButton.innerHTML = '🠕';
+			toTopButton.innerHTML = '<div id="to_top_button"></div>';
 			hideElementsAndShowResult();
 			lastEquation = false;
 		}
-		setTimeout(() => {
-			explanationsWrapper.style.display = 'none';
-		}, 1000)
 	}, 500)
 })
+
+window.onscroll = function() {checkScrolling()};
+
+function checkScrolling() {
+	if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+		toTopWrapper.classList.remove('hiden');
+	} else {
+		toTopWrapper.classList.add('hiden');
+	}
+}
 
 range.oninput = function() {
 	updateRangeValue();
@@ -126,6 +129,9 @@ function resetData() {
 	curPoints = 0;
 	trainingInProgress = false;
 	mistakesHeader.classList.remove('no_mistakes');
+	document.querySelectorAll('.explanations_wrapper').forEach((item) => {
+		item.remove();
+	})
 }
 
 function doEquation() {
@@ -208,18 +214,29 @@ function hideElementsAndShowResult() {
 // functions
 
 function showAnswerAndExplanations () {
-	let equationDiv= document.createElement('div');
-	equationDiv.id = 'equation_with_answer';
+	let explanationsWrapper = document.createElement('div');
+	let fullEquationContainer = document.createElement('div');
+	let explanationsContainer = document.createElement('div');
+	explanationsWrapper.className = 'explanations_wrapper';
+	fullEquationContainer.className = 'full_equation';
+	explanationsContainer.className = 'explanations_container';
+	explanationsWrapper.appendChild(fullEquationContainer);
+	explanationsWrapper.appendChild(explanationsContainer);
+
+	let equationDiv = document.createElement('div');
+	equationDiv.className = 'equation_with_answer';
 	equationDiv.innerHTML = equation.full;
-	fullEquationContainer.innerHTML = '';
+
 	fullEquationContainer.appendChild(equationDiv);
+
 	explanationsContainer.innerHTML = equation.explanations;
-	explanationsWrapper.style.display = 'block';
-	explanationsWrapper.classList.remove('hiden');
-	toTopWrapper.classList.remove('hiden');
+
+	mistakesHeader.after(explanationsWrapper);
+
 	if (equations.length == 0) {
 		toTopButton.innerHTML = '✓';
 	}
+
 	setTimeout(() => {
 		explanationsWrapper.scrollIntoView({behavior: "smooth"});
 		setTimeout(() => {

@@ -3,6 +3,8 @@
 	position: relative;
 }
 
+
+
 :root {
 	--green: #66ff66;
 	--lightgray: #f2f2f2;
@@ -22,6 +24,9 @@
 	background-color: var(--green);
 }
 
+body {
+	padding-top: 30px;
+}
 
 .results {
 	z-index: 3;
@@ -167,7 +172,7 @@ table.stats {
 
 
 .main {
-	margin: 30px auto;
+	margin: auto;
 	max-width: 1000px;
 	background-color: #f2f2f2;
 	border-radius: 20px;
@@ -418,6 +423,7 @@ input::-webkit-inner-spin-button {
 
 @media (max-width: 600px) {
 	body {
+		padding-top: 40px;
 		background-color: var(--lightgray);
 	}
 	.results.full {
