@@ -366,6 +366,9 @@ Fraction.actionExplanations = function (equation, final = false) {
                         wholeFr.numer = eq1.numer - eq2.numer;
                         break;
                 }
+                if (!Fraction.isEqual(answer, wholeFr)) {
+                    add1Eq(wholeFr);
+                }
                 
             }
             break;
@@ -509,11 +512,18 @@ Fraction.actionExplanations = function (equation, final = false) {
             step.push('=', 'DEM');
             step.push(answer.copy());
         } else {
-            answer.simplifyFraction();
-            step.push(answer.copy());
             if (answer.isDecimal()) {
+                answer.simplifyFraction();
+                step.push(answer.copy());
                 step.push('=', 'DEM');
                 step.push(answer.copy());
+            } else {
+                step.push(answer.copy());
+                let check = answer.copy();
+                answer.simplifyFraction();
+                if (!Fraction.isEqual(check, answer) && (sign == '+' || sign == '-')) {
+                    step.push('=', answer.copy());
+                }
             }
         }
     }
