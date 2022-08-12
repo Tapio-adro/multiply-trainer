@@ -14,7 +14,7 @@ activateColorButtons();
 if (linkToFractionButton) {
 	linkToFractionButton.addEventListener('click', ev => {
 		if (linkToFractionButton.classList.contains('active')) {
-			window.location.href = "../fraction/index.html";
+			window.location.href = "./fraction/index.html";
 		} else {
 			linkToFractionButton.classList.add('active');
 			linkToFractionButton.innerHTML = 'Тренажер дробів';
@@ -31,7 +31,7 @@ if (linkToFractionButton) {
 } else {
 	linkToMainButton.addEventListener('click', ev => {
 		if (linkToMainButton.classList.contains('active')) {
-			window.location.href = "../main/index.html";
+			window.location.href = "../index.html";
 		} else {
 			linkToMainButton.classList.add('active');
 			linkToMainButton.innerHTML = 'Тренажер множення';
